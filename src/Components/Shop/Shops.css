@@ -6,15 +6,3 @@
   padding: 40px;
   margin-right: 50px;
 }
-
-.body {
-  display: grid;
-  grid-template-columns: 80% 20%;
-}
-.product-result {
-  text-align: center;
-  background-color: #ffe0b3;
-}
-.product-result h2 {
-  margin-top: 40px;
-}

@@ -119,12 +119,12 @@ const Login = () => {
                                             <label className="block text-gray-400">Password</label>
                                             <input type="password" name="password" id="password" placeholder="Password" required className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-violet-400" />
                                             <div className="flex justify-end text-xs text-gray-400">
-                                                <Link className="hover:text-red-300" rel="noopener noreferrer" to="#">Forgot Password?</Link>
+                                                <Link className="hover:text-red-300"  to="#">Forgot Password?</Link>
                                             </div>
                                         </div>
                                         <button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400 hover:bg-violet-600">Sign in</button>
                                         <p className="text-xs mt-10 text-center sm:px-6 text-gray-400">Don't have an account?
-                                            <Link rel="noopener noreferrer" to="/registration" className="hover:underline  ml-2  text-gray-100">Sign up</Link>
+                                            <Link  to="/registration" className="hover:underline  ml-2  text-gray-100">Sign up</Link>
                                         </p>
                                     </form>
 

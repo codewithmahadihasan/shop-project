@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <Nav></Nav>
-            <div className='pt-20'>
+            <div className='pt-20  '>
                 <Outlet ></Outlet>
             </div>
         </div>

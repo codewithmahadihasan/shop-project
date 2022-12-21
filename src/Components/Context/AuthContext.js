@@ -79,10 +79,10 @@ const UseContext = ({ children }) => {
         return () => {
             unsubscribe()
         }
-    }, [])
+    }, [auth])
 
 
-    const authInfo = { RegistrationInEmail, loginWithEamil, setName, user, logOut, verify, Google, loading }
+    const authInfo = { RegistrationInEmail, loginWithEamil, setName, user, logOut, verify, Google, loading, setLoading }
     return (
         <Auth.Provider value={authInfo}>
             {children}

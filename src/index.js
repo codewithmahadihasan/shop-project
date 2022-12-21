@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContext from './Components/Context/AuthContext';
-
+import ScrollToTop from './Scroll';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   <React.StrictMode>
     <AuthContext>
+ 
       <App></App>
     </AuthContext>
 

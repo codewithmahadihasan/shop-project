@@ -35,9 +35,9 @@ const Orders = () => {
                     </div>
                 }
             </div>
-            <div className='text-center bg-orange-200'>
+            <div className='text-center lg:block hidden bg-orange-200'>
                 <Result crearCard={crearCard} cart={cart}>
-                    <Link to='/shiping'><button className='bg-orange-400 hover:bg-orange-600' onClick={crearCard} >Shiping Now <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+                    <Link to='/shiping'><button className='bg-orange-400 py-2 w-full hover:bg-orange-600' onClick={crearCard} >Shiping Now <FontAwesomeIcon icon={faArrowRight} /></button></Link>
 
                 </Result></div>
         </div >

@@ -7,8 +7,14 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import './Shops.css'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Auth } from '../Context/AuthContext';
+import Spinner from '../../Spinner';
 
 const Shops = () => {
+
+    const { setLoading, loading } = useContext(Auth)
+
 
     const [products, setProduct] = useState([])
     const [count, setCount] = useState(0)
@@ -17,14 +23,16 @@ const Shops = () => {
     const [size, setSize] = useState(9)
 
     useEffect(() => {
+        setLoading(true)
         const url = `https://amazon-server-ten.vercel.app/products?page=${page}&size=${size}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 setCount(data.count)
                 setProduct(data.products)
+                setLoading(false)
             })
-    }, [page, size])
+    }, [page, size, setLoading])
 
     const pages = Math.ceil(count / size)
 
@@ -55,6 +63,10 @@ const Shops = () => {
 
     }, [products])
 
+
+    if (loading) {
+        return <Spinner></Spinner>
+    }
     const crearCard = () => {
         setCart([])
         deleteShoppingCart()
@@ -81,20 +93,20 @@ const Shops = () => {
 
 
     return (
-        <div className='py-10'>
-            <div className='body'>
+        <div className='py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl'>
+            <div className='flex '>
+                <div className='product-result  hidden lg:block'>
+
+                    <Result cart={cart} crearCard={crearCard} >
+                        <Link to={'/order'}> <button className='py-2 w-full ' id='review'>Review Order <FontAwesomeIcon icon={faArrowRight} /> </button></Link>
+
+                    </Result>
+                </div>
                 <div className='product'>
                     {
                         products.map(product => <Product key={product._id} product={product} addToCard={addToCard}></Product>)
                     }
 
-                </div>
-                <div className='product-result'>
-
-                    <Result cart={cart} crearCard={crearCard} >
-                        <Link to={'/order'}> <button id='review'>Review Order <FontAwesomeIcon icon={faArrowRight} /> </button></Link>
-
-                    </Result>
                 </div>
             </div>
 
@@ -106,10 +118,10 @@ const Shops = () => {
                 {
                     [...Array(pages).keys()].map(number => <button
                         onClick={() => setPage(number)}
-                        className={page === number ? "inline-flex items-center text-white justify-center w-8 h-8 text-sm border-2 rounded shadow-md m-1 dark:bg-gray-800 dark:border-yellow-500" : "inline-flex items-center text-white justify-center w-8 h-8 text-sm border rounded shadow-md m-1 dark:bg-gray-500 dark:border-gray-100"} key={number}>{number + 1}</button>)
+                        className={page === number ? "inline-flex items-center text-white justify-center w-8 h-8 text-sm border-2 rounded shadow-md m-1 bg-gray-800 border-yellow-500" : "inline-flex items-center text-white justify-center w-8 h-8 text-sm border rounded shadow-md m-1 bg-gray-500 border-gray-100"} key={number}>{number + 1}</button>)
                 }
 
-                <select className='inline-flex items-center text-white border-2 justify-center w-20 h-8 text-sm border-yellow-400 text-center rounded shadow-md m-1 dark:bg-gray-800 ' onChange={event => setSize(event.target.value)}>
+                <select className='inline-flex items-center text-white border-2 justify-center w-20 h-8 text-sm border-yellow-400 text-center rounded shadow-md m-1 bg-gray-800 ' onChange={event => setSize(event.target.value)}>
                     <option className='w-20 ' value="5">5</option>
                     <option value="10" selected >10</option>
                     <option value="15">15</option>

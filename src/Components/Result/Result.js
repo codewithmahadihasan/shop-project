@@ -22,23 +22,31 @@ const Result = (props) => {
     let all = tax + total + shipping;
 
     return (
-        <div className='all-data bg-orange-200 pt-20 text-center md:text-start'>
-            <h2 className='text-2xl font-bold text-center'>
-                Order Summary
-            </h2>
-            <div className='result '>
-                <p>Selected Items: {quantity}</p>
-                <p>Total Price: ${total}</p>
-                <p>Total Shipping Charge: ${shipping}</p>
-                <p>Tax: ${tax.toFixed(2)}</p>
-                <h4>Grand Total: ${all.toFixed(2)}</h4>
+        <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r bg-gray-900 border-gray-700">
+            <h2 className="text-3xl font-semibold text-center text-gray-800 text-white">Order Summary</h2>
+
+
+
+            <div className="flex flex-col justify-between flex-1 mt-6">
+
+                <div>
+                    <p className='px-4 py-2 text-gray-200'>Selected Items: {quantity}</p>
+                    <p className='px-4 py-2 mt-4 text-gray-200'>Total Price: ${total}</p>
+                    <p className='px-4 py-2 mt-4 text-gray-200'>Shipping Charge: ${shipping}</p>
+                    <p className='px-4 py-2 mt-4 text-gray-200'>Tax: ${tax.toFixed(2)}</p>
+                    <h4 className='px-4 py-2 mt-4 text-gray-200'>Grand Total: ${all.toFixed(2)}</h4>
+                    <div className='flex flex-col gap-4'>
+                        <button onClick={crearCard} className='py-2 w-full' id='clear'>Clear Card <FontAwesomeIcon icon={faTrash} /></button>
+
+                        {
+                            children
+                        }
+                    </div>
+                </div>
+
+
+
             </div>
-            <button onClick={crearCard} id='clear'>Clear Card <FontAwesomeIcon icon={faTrash} /></button>
-
-            {
-                children
-            }
-
         </div>
 
     );
